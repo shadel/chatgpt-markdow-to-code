@@ -4,44 +4,44 @@
     "description": "A tool to convert code blocks in markdown files to separate coding files.",
     "main": "dist/main.js",
     "scripts": {
-      "build": "tsc",
-      "lint": "eslint . --ext .ts",
-      "lint:fix": "eslint . --ext .ts --fix",
-      "test": "jest",
-      "prepare": "husky install",
-      "prepublishOnly": "npm run build"
+        "build": "tsc",
+        "lint": "eslint . --ext .ts",
+        "lint:fix": "eslint . --ext .ts --fix",
+        "test": "jest",
+        "prepare": "husky install",
+        "prepublishOnly": "npm run build"
     },
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/your-username/your-repo.git"
+        "type": "git",
+        "url": "git+https://github.com/your-username/your-repo.git"
     },
     "keywords": [],
     "author": "Your Name",
     "license": "MIT",
     "bugs": {
-      "url": "https://github.com/your-username/your-repo/issues"
+        "url": "https://github.com/your-username/your-repo/issues"
     },
     "homepage": "https://github.com/your-username/your-repo#readme",
     "devDependencies": {
-      "typescript": "^4.0.0",
-      "eslint": "^7.0.0",
-      "@typescript-eslint/parser": "^4.0.0",
-      "@typescript-eslint/eslint-plugin": "^4.0.0",
-      "jest": "^26.0.0",
-      "@types/jest": "^26.0.0",
-      "ts-jest": "^26.0.0",
-      "husky": "^6.0.0",
-      "lint-staged": "^10.0.0"
+        "@types/jest": "^26.0.0",
+        "@types/minimist": "^1.2.5",
+        "@typescript-eslint/eslint-plugin": "^4.0.0",
+        "@typescript-eslint/parser": "^4.0.0",
+        "eslint": "^7.0.0",
+        "husky": "^6.0.0",
+        "jest": "^26.0.0",
+        "lint-staged": "^10.0.0",
+        "ts-jest": "^26.0.0",
+        "typescript": "^4.0.0"
     },
     "dependencies": {
-      "marked": "^1.0.0",
-      "minimist": "^1.0.0"
+        "marked": "^1.0.0",
+        "minimist": "^1.0.0"
     },
     "lint-staged": {
-      "src/**/*.{ts,tsx}": [
-        "eslint --fix",
-        "jest --bail --findRelatedTests"
-      ]
+        "src/**/*.{ts,tsx}": [
+            "eslint --fix",
+            "jest --bail --findRelatedTests"
+        ]
     }
-  }
-  
+}

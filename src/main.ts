@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import * as minimist from 'minimist';
+import minimist from 'minimist';
 import { CodeExtractor } from './services/CodeExtractor';
 import { FileSaver } from './services/FileSaver';
 
