@@ -12,13 +12,15 @@ export class CodeExtractor {
       if (line.startsWith('```')) {
         if (currentLang) {
           // End of current code block
-          codeBlocks.push({ path: currentFilePath, lang: currentLang, code: currentCode.join('\n') });
+          if (currentFilePath) {
+            codeBlocks.push({ path: currentFilePath, lang: currentLang, code: currentCode.join('\n') });
+          }
           currentLang = null;
           currentCode = [];
           currentFilePath = null;
         } else {
           // Start of new code block
-          currentLang = line.replace('```', '').trim();
+          currentLang = line.replace('```', '').trim() || "unknown";
         }
       } else if (currentLang) {
         currentCode.push(line);

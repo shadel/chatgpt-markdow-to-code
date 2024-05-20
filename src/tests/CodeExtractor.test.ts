@@ -10,19 +10,19 @@ describe('CodeExtractor', () => {
 
   it('should extract code blocks with file paths and languages', () => {
     const markdown = `
-    Here is some JavaScript code:
+Here is some JavaScript code:
 
-    **scripts/hello.js**:
-    \`\`\`javascript
-    console.log('Hello, world!');
-    \`\`\`
+**scripts/hello.js**:
+\`\`\`javascript
+console.log('Hello, world!');
+\`\`\`
 
-    Here is some Python code:
+Here is some Python code:
 
-    **scripts/hello.py**:
-    \`\`\`python
-    print('Hello, world!')
-    \`\`\`
+**scripts/hello.py**:
+\`\`\`python
+print('Hello, world!')
+\`\`\`
     `;
 
     const expectedCodeBlocks: ICodeBlock[] = [
@@ -42,22 +42,22 @@ describe('CodeExtractor', () => {
     expect(codeBlocks).toEqual(expectedCodeBlocks);
   });
 
-  it('should skip code blocks without file paths or languages', () => {
+  it('should skip code blocks without file paths', () => {
     const markdown = `
-    **scripts/hello.js**:
-    \`\`\`
-    console.log('Hello, world!');
-    \`\`\`
+**scripts/hello.js**:
+\`\`\`
+console.log('Hello, world!');
+\`\`\`
 
-    \`\`\`python
-    print('Hello, world!')
-    \`\`\`
+\`\`\`python
+print('Hello, world!')
+\`\`\`
     `;
 
     const expectedCodeBlocks: ICodeBlock[] = [
       {
         path: 'scripts/hello.js',
-        lang: null,
+        lang: 'unknown',
         code: "console.log('Hello, world!');"
       }
     ];
