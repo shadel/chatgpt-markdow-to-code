@@ -7,9 +7,14 @@ describe('FilePathExtractor', () => {
     filePathExtractor = new FilePathExtractor();
   });
 
-  it('should extract valid file paths', () => {
+  it('should extract valid file paths wrapped in double asterisks', () => {
     const line = '**scripts/hello.js**:';
     expect(filePathExtractor.extractFilePath(line)).toEqual('scripts/hello.js');
+  });
+
+  it('should extract valid file paths wrapped in backticks', () => {
+    const line = '### `scripts/hello.py`';
+    expect(filePathExtractor.extractFilePath(line)).toEqual('scripts/hello.py');
   });
 
   it('should return null for invalid file paths', () => {
