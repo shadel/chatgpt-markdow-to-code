@@ -22,14 +22,14 @@ describe('CodeExtractor - File Path Tests', () => {
     const markdown = `
     Here is some JavaScript code:
 
-    #### scripts/hello.js **:
+    #### **scripts/hello.js**:
     \`\`\`javascript
     console.log('Hello, world!');
     \`\`\`
 
     Here is some Python code:
 
-    #### scripts/hello.py **:
+    #### **scripts/hello.py**:
     \`\`\`python
     print('Hello, world!')
     \`\`\`
@@ -56,14 +56,14 @@ describe('CodeExtractor - File Path Tests', () => {
     const markdown = `
     Here is some JavaScript code:
 
-    2. scripts/hello.js **:
+    2. **scripts/hello.js**:
     \`\`\`javascript
     console.log('Hello, world!');
     \`\`\`
 
     Here is some Python code:
 
-    2. scripts/hello.py **:
+    2. **scripts/hello.py**:
     \`\`\`python
     print('Hello, world!')
     \`\`\`
