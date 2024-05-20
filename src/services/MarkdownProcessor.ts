@@ -1,7 +1,19 @@
-import logger from '../utils/logger';
+// src/services/MarkdownProcessor.ts
+import { IMarkdownProcessor } from '../interfaces/IMarkdownProcessor';
 import { ICodeBlock } from '../interfaces/ICodeBlock';
+import { FilePathExtractor } from './FilePathExtractor';
+import { CodeBlockExtractor } from './CodeBlockExtractor';
+import logger from '../utils/logger';
 
-export class MarkdownProcessor {
+export class MarkdownProcessor implements IMarkdownProcessor {
+  private filePathExtractor: FilePathExtractor;
+  private codeBlockExtractor: CodeBlockExtractor;
+
+  constructor() {
+    this.filePathExtractor = new FilePathExtractor();
+    this.codeBlockExtractor = new CodeBlockExtractor();
+  }
+
   process(markdown: string): { filePath: string | null, language: string | null, code: string[] }[] {
     logger.info('Starting to process markdown');
     const lines = markdown.split('\n');
@@ -12,25 +24,27 @@ export class MarkdownProcessor {
     let insideCodeBlock = false;
 
     lines.forEach((line, index) => {
-      if (line.trim().startsWith('```')) {
+      if (this.codeBlockExtractor.isCodeBlockDelimiter(line)) {
         if (insideCodeBlock) {
           // End of current code block
           insideCodeBlock = false;
-          results.push({ filePath: currentFilePath, language: currentLang, code: currentCode });
+          if (currentFilePath) {
+            results.push({ filePath: currentFilePath, language: currentLang, code: currentCode });
+          }
           currentLang = null;
           currentCode = [];
           currentFilePath = null;
         } else {
           // Start of new code block
           insideCodeBlock = true;
-          currentLang = line.trim().replace('```', '').trim() || 'unknown';
+          currentLang = this.codeBlockExtractor.getCodeBlockLanguage(line) || 'unknown';
         }
       } else if (insideCodeBlock) {
         currentCode.push(line);
       } else {
-        const filePathMatch = line.match(/^\s*(\*\*|####)\s*(.+?)\s*\*\*:/);
-        if (filePathMatch) {
-          currentFilePath = filePathMatch[2].trim();
+        const filePath = this.filePathExtractor.extractFilePath(line);
+        if (filePath) {
+          currentFilePath = filePath;
           logger.info(`Found file path: ${currentFilePath} at line ${index + 1}`);
         }
       }
