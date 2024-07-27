@@ -1,8 +1,9 @@
 name: Publish to npm
 
 on:
+  workflow_dispatch:
   push:
-branch: ["master"]
+    branches: [ "master" ]
 
 jobs:
   publish:
