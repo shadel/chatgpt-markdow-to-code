@@ -16,6 +16,9 @@
     "bin": {
         "chatgpt-markdow-to-code": "dist/main.js"
     },
+    "files": [
+        "dist"
+    ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/your-username/your-repo.git"
