@@ -1,5 +1,5 @@
 {
-    "name": "markdown-to-code",
+    "name": "chatgpt-markdow-to-code",
     "version": "1.0.0",
     "description": "A tool to convert code blocks in markdown files to separate coding files.",
     "main": "dist/main.js",
