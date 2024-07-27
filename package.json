@@ -13,6 +13,9 @@
         "watch": "tsc -w",
         "start": "node dist/main.js"
     },
+    "bin": {
+        "chatgpt-markdow-to-code": "dist/main.js"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/your-username/your-repo.git"
