@@ -27,5 +27,5 @@ jobs:
     - name: Lint code
       run: npm run lint
 
-    - name: Publish to npm
-      run: npm build
+    - name: Build
+      run: npm run build
