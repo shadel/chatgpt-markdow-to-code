@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import * as fs from 'fs';
 import minimist from 'minimist';
 import { CodeExtractor } from './services/CodeExtractor';
